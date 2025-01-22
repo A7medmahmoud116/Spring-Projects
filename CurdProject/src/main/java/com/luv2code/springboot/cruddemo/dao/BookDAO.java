@@ -11,4 +11,5 @@ public interface BookDAO {
     public List<Book> getBooks();
     public Book findById(int theId);
     public String delete(int theId);
+    public Book update(Book myBook);
 }

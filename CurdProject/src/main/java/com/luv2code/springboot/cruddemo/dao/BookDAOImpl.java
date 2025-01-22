@@ -47,4 +47,10 @@ public class BookDAOImpl implements BookDAO{
         }
 
     }
+
+    @Override
+    public Book update(Book myBook) {
+        Book dbBook = entityManager.merge(myBook);
+        return dbBook;
+    }
 }
