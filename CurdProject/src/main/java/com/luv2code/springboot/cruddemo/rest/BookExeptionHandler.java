@@ -11,7 +11,7 @@ public class BookExeptionHandler {
     public ResponseEntity<BookErrorMassage> handleExeption(BookNotFoundExeption exc){
         BookErrorMassage bookErrorMassage = new BookErrorMassage();
         bookErrorMassage.setStatus(HttpStatus.NOT_FOUND.value());
-        bookErrorMassage.setMassage("Book Not Found");
+        bookErrorMassage.setMassage(exc.getMessage());
         bookErrorMassage.setTimeStamp(System.currentTimeMillis());
         return new ResponseEntity<>(bookErrorMassage,HttpStatus.NOT_FOUND);
     }
