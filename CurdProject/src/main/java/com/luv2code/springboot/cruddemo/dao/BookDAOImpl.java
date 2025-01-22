@@ -1,6 +1,7 @@
 package com.luv2code.springboot.cruddemo.dao;
 
 import com.luv2code.springboot.cruddemo.entity.Book;
+import com.luv2code.springboot.cruddemo.rest.BookNotFoundExeption;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +34,9 @@ public class BookDAOImpl implements BookDAO{
     @Override
     public Book findById(int theId) {
         Book theBook = entityManager.find(Book.class,theId);
+        if(theBook == null){
+            throw new BookNotFoundExeption("Book is not Found with id - "+theId);
+        }
         return theBook;
     }
 
@@ -40,7 +44,7 @@ public class BookDAOImpl implements BookDAO{
     public String delete(int theId) {
         Book myBook = entityManager.find(Book.class,theId);
         if(myBook == null){
-            return "Not Found";
+            throw new BookNotFoundExeption("Book is not Found with id - "+theId);
         }else{
             entityManager.remove(myBook);
             return "Book deleted";
