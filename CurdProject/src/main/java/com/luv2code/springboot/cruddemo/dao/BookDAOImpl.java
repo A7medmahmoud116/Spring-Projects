@@ -29,4 +29,10 @@ public class BookDAOImpl implements BookDAO{
         List<Book> books = query.getResultList();
         return books;
     }
+
+    @Override
+    public Book findById(int theId) {
+        Book theBook = entityManager.find(Book.class,theId);
+        return theBook;
+    }
 }

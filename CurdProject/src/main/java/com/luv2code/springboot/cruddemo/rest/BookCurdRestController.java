@@ -24,4 +24,8 @@ public class BookCurdRestController {
     public List<Book> getBooks(){
         return bookService.getBooks();
     }
+    @GetMapping("/books/{theId}")
+    public Book findById(@PathVariable int theId){
+        return bookService.findById(theId);
+    }
 }
