@@ -35,4 +35,16 @@ public class BookDAOImpl implements BookDAO{
         Book theBook = entityManager.find(Book.class,theId);
         return theBook;
     }
+
+    @Override
+    public String delete(int theId) {
+        Book myBook = entityManager.find(Book.class,theId);
+        if(myBook == null){
+            return "Not Found";
+        }else{
+            entityManager.remove(myBook);
+            return "Book deleted";
+        }
+
+    }
 }

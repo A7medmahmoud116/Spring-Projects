@@ -28,4 +28,8 @@ public class BookCurdRestController {
     public Book findById(@PathVariable int theId){
         return bookService.findById(theId);
     }
+    @DeleteMapping("/books/{theId}")
+    public String delete(@PathVariable int theId){
+        return bookService.delete(theId);
+    }
 }

@@ -9,4 +9,5 @@ public interface BookService {
     public Book addBook(Book mybook);
     public List<Book> getBooks();
     public Book findById(int theId);
+    public String delete(int theId);
 }
